@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>数字合成挑战</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div id="app">
+
+    <!-- ====== 开始菜单 ====== -->
+    <div class="screen active" id="menuScreen">
+      <div class="menu-header">
+        <div class="menu-icon">🧮</div>
+        <h1 class="menu-title">数字合成挑战</h1>
+        <div class="menu-subtitle" id="menuSubtitle">A · B · C</div>
+      </div>
+
+      <div class="menu-progress">
+        <span class="menu-progress-label" id="menuProgressLabel">已到达: 第 1 关</span>
+        <div class="menu-progress-bar">
+          <div class="menu-progress-fill" id="menuProgressFill"></div>
+        </div>
+        <span class="menu-progress-text" id="menuProgressText">1 / 30</span>
+      </div>
+
+      <button class="menu-start-btn" id="menuStartBtn">▶ 开始游戏</button>
+
+      <div class="menu-stats" id="menuStats">
+        <div class="menu-stats-toggle" id="menuStatsToggle">📊 统计信息</div>
+        <div class="menu-stats-body" id="menuStatsBody">
+          <div class="stat-row"><span>总局数</span><span id="statTotal">0</span></div>
+          <div class="stat-row"><span>胜场</span><span id="statWins">0</span></div>
+          <div class="stat-row"><span>负场</span><span id="statLosses">0</span></div>
+          <div class="stat-row"><span>胜率</span><span id="statRate">0%</span></div>
+          <div class="stat-row"><span>最快完成</span><span id="statBest">--</span></div>
+          <div class="stat-row"><span>当前连胜</span><span id="statStreak">0</span></div>
+          <div class="stat-row"><span>最长连胜</span><span id="statMaxStreak">0</span></div>
+        </div>
+      </div>
+
+      <div class="menu-quick" id="menuQuick">
+        <div class="menu-quick-title">快速开始</div>
+        <div class="menu-quick-btns" id="menuQuickBtns"></div>
+      </div>
+    </div>
+
+    <!-- ====== 游戏界面 ====== -->
+    <div class="screen" id="gameScreen">
+      <header>
+        <div class="header-top">
+          <button class="back-btn" id="backBtn">←</button>
+          <span class="header-title">数字合成挑战</span>
+          <span class="level-badge" id="levelBadge">第 1 关</span>
+        </div>
+        <div class="progress-bar">
+          <div class="progress-fill" id="progressFill"></div>
+        </div>
+      </header>
+
+      <section class="game-info">
+        <div class="target-display">
+          <span class="target-label">目标值</span>
+          <span class="target-value" id="targetValue">24</span>
+        </div>
+        <div class="timer-display" id="timerDisplay">
+          <span class="timer-icon">⏱</span>
+          <span class="timer-text" id="timerText">01:30</span>
+        </div>
+      </section>
+
+      <section class="card-area">
+        <div class="card-grid" id="cardGrid"></div>
+      </section>
+
+      <section class="status-bar" id="statusBar">
+        <div class="status-slots" id="statusSlots">
+          <span class="status-slot" id="statusA">?</span>
+          <span class="status-op" id="statusOp">?</span>
+          <span class="status-slot" id="statusB">?</span>
+        </div>
+      </section>
+
+      <section class="guide-area">
+        <div class="guide-text" id="guideText">点击数字卡片开始</div>
+      </section>
+
+      <section class="operator-area">
+        <div class="operator-row">
+          <button class="op-btn" data-op="+" disabled>+</button>
+          <button class="op-btn" data-op="-" disabled>−</button>
+          <button class="op-btn" data-op="*" disabled>×</button>
+          <button class="op-btn" data-op="/" disabled>÷</button>
+        </div>
+      </section>
+
+      <section class="action-area">
+        <button class="action-btn hint-btn" id="hintBtn">💡 提示 <span class="hint-count" id="hintCount">(3)</span></button>
+        <button class="action-btn reset-btn" id="resetBtn">🔄 重开</button>
+      </section>
+
+      <section class="history-area">
+        <div class="history-title">运算步骤</div>
+        <div class="history-list" id="historyList">
+          <div class="history-empty">等待开始...</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- ====== 弹窗 ====== -->
+    <div class="modal-overlay" id="modalOverlay">
+      <div class="modal">
+        <div class="modal-icon" id="modalIcon">🎉</div>
+        <div class="modal-title" id="modalTitle">胜利！</div>
+        <div class="modal-body" id="modalBody">你成功合出了目标值！</div>
+        <button class="modal-btn" id="modalBtn">下一关</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/audio.js"></script>
+  <script src="js/generator.js"></script>
+  <script src="js/solver.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/menu.js"></script>
+  <script src="js/ui.js"></script>
+</body>
+</html>
